@@ -1,6 +1,7 @@
 # Bytewax Helm Chart
 
 * Runs a [Bytewax](https://bytewax.io) dataflow on a Kubernetes cluster.
+* bump
 
 ## Get Repo Info
 
