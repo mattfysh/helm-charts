@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "bytewax.labels" . | nindent 4 }}  
+    {{- include "bytewax.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.configuration.processesCount }}
   selector:
@@ -75,7 +75,7 @@ spec:
 {{- end }}
       - name: init-hostfile
         securityContext:
-          {{- toYaml .Values.securityContext | nindent 12 }}      
+          {{- toYaml .Values.securityContext | nindent 12 }}
         env:
         - name: BYTEWAX_REPLICAS
           value: "{{ .Values.configuration.processesCount }}"
@@ -103,7 +103,7 @@ spec:
           mountPath: /etc/bytewax
         - name: working-directory
           mountPath: /var/bytewax/
-        - name: python-files          
+        - name: python-files
 {{- if (.Values.configuration.configMap.files.tarName) }}
           mountPath: /tmp/bytewax/{{ .Values.configuration.configMap.files.tarName }}
           subPath: {{ .Values.configuration.configMap.files.tarName }}
@@ -135,12 +135,12 @@ spec:
       - name: {{ .Values.containerName }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        command: ["sh","-c","sh ./entrypoint.sh"]
+        # command: ["sh","-c","sh ./entrypoint.sh"]
         ports:
         - containerPort: {{ .Values.service.port }}
           name: process
         - containerPort: {{ .Values.api.port }}
-          name: api          
+          name: api
         env:
         - name: RUST_LOG
           value: "librdkafka=debug,rdkafka::client=debug"

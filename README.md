@@ -1,7 +1,6 @@
 # Bytewax Helm Chart
 
 * Runs a [Bytewax](https://bytewax.io) dataflow on a Kubernetes cluster.
-* bump
 
 ## Get Repo Info
 
@@ -122,11 +121,11 @@ configuration:
   processesCount: 5
   configMap:
     files:
-      pattern: 
+      pattern:
       tarName: "examples.tar"
 ```
 
-In this example, we store a tar file in the configmap. This is useful when your python script needs a tree of nested files and directories. 
+In this example, we store a tar file in the configmap. This is useful when your python script needs a tree of nested files and directories.
 
 Following our example, the tar file has this content:
 ```console
